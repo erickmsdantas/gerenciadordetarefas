@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/template.xhtml">
+
+	<ui:define name="content">
+
+		<h:body>
+			<h:form>
+
+				<p:messages id="messages" showDetail="true" closable="true">
+					<p:autoUpdate />
+				</p:messages>
+
+				<div>
+					<h1 class="titulo">Lista de Responsáveis</h1>
+
+					<p:commandButton value="Cadastrar Responsável"
+						action="#{responsavelBean.irCadastrar}" icon="pi pi-plus"
+						style="margin-bottom: 1.5rem;" />
+				</div>
+
+				<p:dataTable value="#{responsavelBean.all}" var="responsavel"
+					rowKey="#{responsavel.id}"
+					emptyMessage="Nenhuma responsável cadastrado">
+					<f:facet name="header" styleClass="center"
+						style="text-align: left;">
+						<h:outputText
+							value="Responsáveis encontrados (#{responsavelBean.all.size()})"
+							style="font-weight: bold;" />
+					</f:facet>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{responsavel.nome}" />
+					</p:column>
+					<p:column headerText="Ações">
+						<p:commandLink value="Editar"
+							action="#{responsavelBean.irEditar(responsavel)}" />
+
+						<h:outputText value=" | " />
+
+						<p:commandLink value="Excluir"
+							action="#{responsavelBean.excluir(responsavel)}">
+							<p:confirm header="Confirme ação"
+								message="Deseja excluir responsável?" icon="pi pi-info-circle" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					responsive="true" width="350">
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no ui-button-flat" />
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" />
+				</p:confirmDialog>
+			</h:form>
+		</h:body>
+	</ui:define>
+</ui:composition>
+</html>

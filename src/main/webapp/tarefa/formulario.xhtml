@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="content">
+
+		<div class="small-container formulario" style="margin-top: 100px;">
+
+			<h:form>
+				<p:messages id="messages" showDetail="true" closable="true">
+					<p:autoUpdate />
+				</p:messages>
+			</h:form>
+
+
+			<p:panel>
+				<f:facet name="header">
+					<h:panelGroup rendered="#{!tarefaBean.isUpdating()}">
+						<h:outputText style="margin: 1.5rem 0;"
+							value="Cadastrar Tarefa" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{tarefaBean.isUpdating()}">
+						<h:outputText style="margin: 1.5rem 0;"
+							value="Alterar Tarefa" />
+						<h1 style="margin: 1.5rem 0;"></h1>
+					</h:panelGroup>
+				</f:facet>
+
+
+				<h:form>
+					<p:panelGrid style="text-align: right; width: 100%;">
+
+						<p:row>
+							<p:column>
+								<h:outputLabel value="Título:" />
+							</p:column>
+							<p:column style="text-align: left;" colspan="3">
+								<p:inputText value="#{tarefaBean.obj.titulo}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<label for="descricao">Descrição:</label>
+							</p:column>
+							<p:column style="text-align: left;" colspan="3">
+								<p:inputTextarea value="#{tarefaBean.obj.descricao}"
+									autoResize="false" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputLabel value="Responsável:" />
+							</p:column>
+							<p:column style="text-align: left;">
+								<p:selectOneMenu value="#{tarefaBean.obj.responsavel}"
+									converter="responsavelConverter">
+									<f:selectItem itemLabel="Selecione" itemValue="" />
+									<f:selectItems value="#{tarefaBean.responsaveis}"
+										var="responsavel" itemValue="#{responsavel}"
+										itemLabel="#{responsavel.nome}" />
+								</p:selectOneMenu>
+							</p:column>
+
+							<p:column>
+								<h:outputLabel value="Prioridade:" />
+							</p:column>
+							<p:column style="text-align: left;">
+								<p:selectOneMenu value="#{tarefaBean.obj.prioridade}">
+									<f:selectItems value="#{tarefaBean.prioridades}"
+										var="prioridade" itemValue="#{prioridade}"
+										itemLabel="#{prioridade.nome}" />
+								</p:selectOneMenu>
+							</p:column>
+
+						</p:row>
+
+						<p:row>
+							<p:column>
+								<h:outputLabel value="Deadline:" />
+							</p:column>
+							<p:column style="text-align: left;" colspan="3">
+								<p:datePicker style="width: 40%" id="basic"
+									value="#{tarefaBean.obj.deadline}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column colspan="4">
+								<p:commandButton styleClass="ui-button-outlined"
+									style="width: 100px; margin-right: .5rem;" value="Cancelar"
+									action="#{tarefaBean.cancelar()}" />
+
+								<p:commandButton style="width: 100px"
+									value="#{tarefaBean.nomeConfirmar}"
+									action="#{tarefaBean.confirmar()}" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</h:form>
+			</p:panel>
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+</html>

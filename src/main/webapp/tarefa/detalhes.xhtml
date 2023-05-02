@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="content">
+		<p:panel header="Detalhes da Tarefa" styleClass="detalhes">
+			<p:panelGrid style="text-align: right; width: 100%">
+
+				<p:row>
+					<p:column>
+						<h:outputLabel value="Título:" />
+					</p:column>
+					<p:column style="text-align: left;" colspan="3">
+						<h:outputText value="#{tarefaBean.obj.titulo}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<label for="descricao">Descrição:</label>
+					</p:column>
+					<p:column style="text-align: left;" colspan="3">
+						<h:outputText value="#{tarefaBean.obj.descricao}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<h:outputLabel value="Responsável:" />
+					</p:column>
+					<p:column style="text-align: left;">
+						<h:outputText value="#{tarefaBean.obj.responsavel.nome}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<h:outputLabel value="Prioridade:" />
+					</p:column>
+					<p:column style="text-align: left;">
+						<h:outputText value="#{tarefaBean.obj.prioridade.nome}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<h:outputLabel value="Deadline:" />
+					</p:column>
+					<p:column style="text-align: left;" colspan="3">
+						<h:outputText style="width: 40%" id="basic"
+							value="#{tarefaBean.obj.deadline}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="4">
+						<p:linkButton style="width: 100px;" value="Voltar"
+							outcome="/tarefa/lista.xhtml" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="content">
+
+		<div class="small-container formulario" style="margin-top: 100px;">
+
+			<h:form>
+				<p:messages id="messages" showDetail="true" closable="true">
+					<p:autoUpdate />
+				</p:messages>
+			</h:form>
+
+			<p:panel>
+				<f:facet name="header">
+					<h:panelGroup rendered="#{!responsavelBean.isUpdating()}">
+						<h:outputText style="margin: 1.5rem 0;"
+							value="Cadastrar Responsável" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{responsavelBean.isUpdating()}">
+						<h:outputText style="margin: 1.5rem 0;"
+							value="Alterar Responsável" />
+						<h1 style="margin: 1.5rem 0;"></h1>
+					</h:panelGroup>
+				</f:facet>
+
+				<h:form>
+					<p:panelGrid style="text-align: right; width: 100%;">
+						<p:row>
+							<p:column>
+								<h:outputLabel value="Nome:" />
+							</p:column>
+							<p:column style="text-align: left;">
+								<p:inputText value="#{responsavelBean.obj.nome}" />
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column colspan="2">
+								<p:commandButton styleClass="ui-button-outlined"
+									style="width: 100px; margin-right: .5rem;" value="Cancelar"
+									action="#{responsavelBean.cancelar()}" />
+
+								<p:commandButton style="width: 100px"
+									value="#{responsavelBean.nomeConfirmar}"
+									action="#{responsavelBean.confirmar()}" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</h:form>
+			</p:panel>
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+</html>

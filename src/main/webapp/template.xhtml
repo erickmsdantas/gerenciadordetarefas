@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<f:view contentType="text/html" encoding="UTF-8">
+
+	<ui:insert name="metadata"></ui:insert>
+	<h:head>
+		<title>Gerenciador de Tarefas</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8"></meta>
+		<h:outputStylesheet library="css" name="style.css" />
+	</h:head>
+
+	<h:body>
+		<header>
+			<ui:include src="/cabecalho.xhtml" />
+		</header>
+
+		<main role="main" class="container">
+			<ui:insert name="content" />
+		</main>
+
+		<ui:include src="/rodape.xhtml" />
+	</h:body>
+</f:view>
+</html>
