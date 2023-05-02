@@ -11,10 +11,10 @@ O Gerenciador de Tarefas permite que os usuários realizem as seguintes funçõe
 * Alterar Tarefa
 * Excluir Tarefa
 * Listar Tarefas
-** Buscar tarefas por número
-** Buscar tarefas por Titulo ou descriçao
-** Buscar tarefas por responsável
-** Buscar tarefas por situação
+    * Buscar tarefas por número
+    * Buscar tarefas por Titulo ou descriçao
+    * Buscar tarefas por responsável
+    * Buscar tarefas por situação
 * Cadastrar Responsável
 * Alterar Responsável
 * Excluir Responsável

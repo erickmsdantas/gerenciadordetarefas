@@ -111,10 +111,12 @@
 
 						<h:outputText value=" | " />
 
-						<p:commandLink value="Editar"
-							action="#{tarefaBean.irEditar(tarefa)}" />
+						<ui:fragment rendered="#{tarefa.situacao == 'EM_ANDAMENTO'}">
+							<p:commandLink value="Editar"
+								action="#{tarefaBean.irEditar(tarefa)}" />
 
-						<h:outputText value=" | " />
+							<h:outputText value=" | " />
+						</ui:fragment>
 
 						<p:commandLink value="Excluir"
 							action="#{tarefaBean.excluir(tarefa)}">
@@ -122,13 +124,15 @@
 								message="Deseja excluir essa tarefa?" icon="pi pi-info-circle" />
 						</p:commandLink>
 
-						<h:outputText value=" | " />
+						<ui:fragment rendered="#{tarefa.situacao == 'EM_ANDAMENTO'}">
+							<h:outputText value=" | " />
 
-						<p:commandLink value="Concluir"
-							action="#{tarefaBean.concluirTarefa(tarefa)}">
-							<p:confirm header="Confirme ação"
-								message="Deseja concluir essa tarefa?" icon="pi pi-info-circle" />
-						</p:commandLink>
+							<p:commandLink value="Concluir"
+								action="#{tarefaBean.concluirTarefa(tarefa)}">
+								<p:confirm header="Confirme ação"
+									message="Deseja concluir essa tarefa?" icon="pi pi-info-circle" />
+							</p:commandLink>
+						</ui:fragment>
 					</p:column>
 				</p:dataTable>
 

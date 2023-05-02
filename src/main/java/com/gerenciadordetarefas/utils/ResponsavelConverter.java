@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import com.gerenciadordetarefas.dao.GenericDAO;
-import com.gerenciadordetarefas.dao.GenericDAOImpl;
 import com.gerenciadordetarefas.dominio.Responsavel;
 
 @FacesConverter(value = "responsavelConverter", forClass = Responsavel.class)
